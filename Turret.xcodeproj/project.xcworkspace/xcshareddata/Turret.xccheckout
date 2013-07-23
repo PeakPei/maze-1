@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2EE6EC8C-21E2-44A9-B729-B8E4D23F6B57</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Turret</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>54292EFF-F262-4E8E-B01A-8213BAB9B34A</key>
+		<string>https://github.com/christinef/maze-1.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Turret.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>54292EFF-F262-4E8E-B01A-8213BAB9B34A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/christinef/maze-1.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>54292EFF-F262-4E8E-B01A-8213BAB9B34A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>54292EFF-F262-4E8E-B01A-8213BAB9B34A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>maze-1</string>
+		</dict>
+	</array>
+</dict>
+</plist>

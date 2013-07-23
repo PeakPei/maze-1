@@ -42,7 +42,7 @@
     NSLog(@"init");
     NSMutableArray *dataArray = [[NSMutableArray alloc] initWithCapacity: 10];
 
-    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"X",@"X",@"X",@"X",@"X",@"X",@"X",@"X",@"X", nil] atIndex:0];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"X",@"X",@"R",@"X",@"X",@"X",@"X",@"X",@"X", nil] atIndex:0];
     [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"0",@"X",@"0",@"0",@"0",@"0",@"0",@"0",@"X", nil] atIndex:1];
     [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"0",@"X",@"0",@"0",@"0",@"0",@"0",@"0",@"X", nil] atIndex:2];
     [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"0",@"X",@"0",@"X",@"X",@"0",@"0",@"0",@"X", nil] atIndex:3];
@@ -50,53 +50,87 @@
     [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"0",@"0",@"0",@"X",@"0",@"0",@"X",@"0",@"X", nil] atIndex:5];
     [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"0",@"0",@"0",@"X",@"0",@"0",@"X",@"X",@"X", nil] atIndex:6];
     [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"0",@"0",@"0",@"0",@"0",@"0",@"X",@"0",@"X", nil] atIndex:7];
-    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"0",@"X", nil] atIndex:8];
-    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"X",@"X",@"X",@"X",@"X",@"X",@"X",@"X",@"X", nil] atIndex:9];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"0",@"X",@"0",@"0",@"0",@"0",@"0",@"0",@"X", nil] atIndex:8];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"0",@"X",@"X",@"X",@"0",@"0",@"0",@"0",@"X", nil] atIndex:9];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"0",@"0",@"0",@"X",@"0",@"0",@"0",@"0",@"X", nil] atIndex:10];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"0",@"0",@"0",@"X",@"X",@"X",@"0",@"0",@"X", nil] atIndex:11];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"0",@"0",@"0",@"0",@"0",@"X",@"0",@"0",@"X", nil] atIndex:12];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"0",@"0",@"0",@"0",@"0",@"X",@"0",@"0",@"X", nil] atIndex:13];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"X",@"X",@"X",@"X",@"X",@"B",@"X",@"X",@"X",@"X", nil] atIndex:14];
+
     int offx = 16;
     int offy = 16;
-    for (int i = 0; i < 10; i++) {
-    for (int j = 0; j < 10; j++) {
-        if ([dataArray[i][j]  isEqual: @"X"]) {
-            CGPoint pos = CGPointMake(32*i+offx, 32*j+offy);
-            [self newWallNode:&pos];
+    for (int i = 0; i < 15; i++) {
+        for (int j = 0; j < 10; j++) {
+            if ([dataArray[i][j]  isEqual: @"X"]) {
+                CGPoint pos = CGPointMake(32*i+offx, 32*j+offy);
+                [self newWallNode:&pos];
+            }
+            if ([dataArray[i][j] isEqual:@"B"]){
+                CGPoint pos = CGPointMake(32*i+offx, 32*j+offy);
+                [self newBluePortal:&pos];
+            }
+            if ([dataArray[i][j] isEqual:@"R"]){
+                CGPoint pos = CGPointMake(32*i+offx, 32*j+offy);
+                [self newOrangePortal:&pos];
+            }
         }
-    }
     }
 }
 
 //OBJECT: Wall: Prevents player from crossing a path.
 - (void)newWallNode:(CGPoint *)pos
 {
-    SKSpriteNode *wallNode = [[SKSpriteNode alloc] initWithColor:[SKColor redColor] size:CGSizeMake(32,32)];
+    SKSpriteNode *wallNode = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(32,32)];
     wallNode.position = *(pos);
     //Set up the physics of the enemy.
     wallNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:wallNode.size];
     wallNode.physicsBody.dynamic = NO;
     wallNode.physicsBody.affectedByGravity = NO;
-
     wallNode.name = @"wallNode";
     [self addChild:wallNode];
 }
+
+//OBJECT: Blue node.
+- (void)newBluePortal:(CGPoint *)pos
+{
+    SKSpriteNode *wallNode = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(32,32)];
+    wallNode.position = *(pos);
+    wallNode.name = @"blueNode";
+    [self addChild:wallNode];
+}
+
+//OBJECT: Orange node.
+- (void)newOrangePortal:(CGPoint *)pos
+{
+    SKSpriteNode *wallNode = [[SKSpriteNode alloc] initWithColor:[SKColor orangeColor] size:CGSizeMake(32,32)];
+    wallNode.position = *(pos);
+    wallNode.name = @"orangeNode";
+    [self addChild:wallNode];
+}
+
 
 //OBJECT: Cursor: This is drawn under your finger (or mouse). The player points towards it.
 - (SKSpriteNode *)newCursorNode
 {
     SKSpriteNode *cursorNode = [[SKSpriteNode alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(8,8)];
-    cursorNode.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame));
+    cursorNode.position = CGPointMake(440, 170);
     cursorNode.name = @"cursorNode";
+    cursorNode.zPosition = -10;
     return cursorNode;
 }
 
 //OBJECT: Player: Stationary object at the center of the screen.
 - (SKSpriteNode *)newPlayerNode
 {
-    SKSpriteNode *playerNode = [[SKSpriteNode alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(16,16)];
+    SKSpriteNode *playerNode = [[SKSpriteNode alloc] initWithColor:[SKColor darkGrayColor] size:CGSizeMake(16,16)];
     playerNode.physicsBody = [SKPhysicsBody bodyWithRectangleOfSize:playerNode.size];
     playerNode.physicsBody.dynamic = YES;
     playerNode.physicsBody.affectedByGravity = NO;
     playerNode.physicsBody.allowsRotation = NO;
     playerNode.physicsBody.mass = 100;
-    playerNode.position = CGPointMake(CGRectGetMidX(self.frame),CGRectGetMidY(self.frame));
+    playerNode.zPosition = -5;
+    playerNode.position = CGPointMake(464, 160);
     playerNode.name = @"playerNode";
     
     return playerNode;
@@ -111,6 +145,15 @@
     px = cursorNode.position.x - playerNode.position.x;
     py = cursorNode.position.y - playerNode.position.y;
     playerNode.physicsBody.velocity = CGPointMake(px*2, py*2);
+    SKNode *player = [self childNodeWithName:@"playerNode"];
+    if(player.position.x > 454 && player.position.y > 160){
+        player.position = CGPointMake(454.0, 160.0);
+        cursorNode.position = CGPointMake(430.0, 170.0);
+    }
+    if(player.position.x < 32.0 && player.position.y < 120.0){
+        player.position = CGPointMake(454.0, 160.0);
+        cursorNode.position = CGPointMake(430.0, 170.0);
+    }
 }
 
 //Delete the specified object.
