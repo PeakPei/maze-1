@@ -21,6 +21,8 @@
 		83B7216C17944BFC00C78605 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B7214E17944BFC00C78605 /* UIKit.framework */; };
 		83B7217417944BFC00C78605 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 83B7217217944BFC00C78605 /* InfoPlist.strings */; };
 		83B7217617944BFC00C78605 /* TurretTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B7217517944BFC00C78605 /* TurretTests.m */; };
+		83B7218117944C4400C78605 /* SceneMain.m in Sources */ = {isa = PBXBuildFile; fileRef = 83B7218017944C4400C78605 /* SceneMain.m */; };
+		83B7218317944C9E00C78605 /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83B7218217944C9E00C78605 /* SpriteKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,9 @@
 		83B7217117944BFC00C78605 /* TurretTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TurretTests-Info.plist"; sourceTree = "<group>"; };
 		83B7217317944BFC00C78605 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		83B7217517944BFC00C78605 /* TurretTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TurretTests.m; sourceTree = "<group>"; };
+		83B7217F17944C4400C78605 /* SceneMain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SceneMain.h; sourceTree = "<group>"; };
+		83B7218017944C4400C78605 /* SceneMain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SceneMain.m; sourceTree = "<group>"; };
+		83B7218217944C9E00C78605 /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83B7218317944C9E00C78605 /* SpriteKit.framework in Frameworks */,
 				83B7214D17944BFC00C78605 /* CoreGraphics.framework in Frameworks */,
 				83B7214F17944BFC00C78605 /* UIKit.framework in Frameworks */,
 				83B7214B17944BFC00C78605 /* Foundation.framework in Frameworks */,
@@ -101,6 +107,7 @@
 		83B7214917944BFC00C78605 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				83B7218217944C9E00C78605 /* SpriteKit.framework */,
 				83B7214A17944BFC00C78605 /* Foundation.framework */,
 				83B7214C17944BFC00C78605 /* CoreGraphics.framework */,
 				83B7214E17944BFC00C78605 /* UIKit.framework */,
@@ -112,11 +119,13 @@
 		83B7215017944BFC00C78605 /* Turret */ = {
 			isa = PBXGroup;
 			children = (
-				83B7215917944BFC00C78605 /* TurretAppDelegate.h */,
-				83B7215A17944BFC00C78605 /* TurretAppDelegate.m */,
 				83B7215C17944BFC00C78605 /* Main.storyboard */,
+				83B7215A17944BFC00C78605 /* TurretAppDelegate.m */,
+				83B7215917944BFC00C78605 /* TurretAppDelegate.h */,
 				83B7215F17944BFC00C78605 /* TurretViewController.h */,
 				83B7216017944BFC00C78605 /* TurretViewController.m */,
+				83B7217F17944C4400C78605 /* SceneMain.h */,
+				83B7218017944C4400C78605 /* SceneMain.m */,
 				83B7216217944BFC00C78605 /* Images.xcassets */,
 				83B7215117944BFC00C78605 /* Supporting Files */,
 			);
@@ -200,6 +209,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Jesse Chand";
 				TargetAttributes = {
+					83B7214617944BFC00C78605 = {
+						DevelopmentTeam = 7A4Y827X28;
+					};
 					83B7216717944BFC00C78605 = {
 						TestTargetID = 83B7214617944BFC00C78605;
 					};
@@ -251,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83B7215B17944BFC00C78605 /* TurretAppDelegate.m in Sources */,
+				83B7218117944C4400C78605 /* SceneMain.m in Sources */,
 				83B7216117944BFC00C78605 /* TurretViewController.m in Sources */,
 				83B7215717944BFC00C78605 /* main.m in Sources */,
 			);
@@ -375,10 +388,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jesse Chand (KF2ZQCAJM2)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turret/Turret-Prefix.pch";
 				INFOPLIST_FILE = "Turret/Turret-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -388,10 +406,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_ENTITLEMENTS[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Jesse Chand (KF2ZQCAJM2)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Turret/Turret-Prefix.pch";
 				INFOPLIST_FILE = "Turret/Turret-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -455,6 +478,7 @@
 				83B7217B17944BFC00C78605 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		83B7217C17944BFC00C78605 /* Build configuration list for PBXNativeTarget "TurretTests" */ = {
 			isa = XCConfigurationList;
@@ -463,6 +487,7 @@
 				83B7217E17944BFC00C78605 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
